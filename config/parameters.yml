@@ -1,0 +1,6 @@
+parameters:
+    database_driver:    pdo_mysql
+    database_host:      localhost
+    database_name:      symfonyDB
+    database_user:      symfony_user
+    database_password:  symfony
