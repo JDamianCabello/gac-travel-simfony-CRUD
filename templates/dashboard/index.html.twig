@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_USER') %}
+<div class="row mt-5 text-center">
+  <div class="col-12 col-md-3">
+    <a class="btn btn-primary p-2" href="{{ path('app_user') }}">
+        <div class="column container">
+            <div class="row">
+                <i class="fa-solid fa-users fa-10x w-100"></i>
+            </div>
+            <div class="row text-uppercase font-weight-bold p-5">
+                usuarios
+            </div>
+        </div>
+    </a>
+  </div>
+  <div class="col-12 col-md-3">
+    <a class="btn btn-warning text-light p-2" href="{{ path('app_category') }}">
+        <div class="column container">
+            <div class="row">
+                <i class="fa-solid fa-list-ul fa-10x w-100"></i>
+            </div>
+            <div class="row text-uppercase font-weight-bold p-5">
+                categorias
+            </div>
+        </div>
+    </a>
+  </div>
+  <div class="col-12 col-md-3">
+    <a class="btn btn-success p-2" href="{{ path('app_product') }}">
+        <div class="column container">
+            <div class="row">
+                <i class="fa-solid fa-boxes-stacked fa-10x w-100"></i>
+            </div>
+            <div class="row text-uppercase font-weight-bold p-5">
+                productos
+            </div>
+        </div>
+    </a>
+  </div>
+  <div class="col-12 col-md-3">
+    <a class="btn btn-danger p-2" href="{{ path('app_log') }}">
+        <div class="column container">
+            <div class="row">
+                <i class="fa-solid fa-file-lines fa-10x w-100"></i>
+            </div>
+            <div class="row text-uppercase font-weight-bold p-5">
+                log stock
+            </div>
+        </div>
+    </a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

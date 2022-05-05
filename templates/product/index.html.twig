@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de productos{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('alert') %}
+    <div class="alert alert-primary mt-5">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger mt-5">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<div class="text-right w-100">
+  <a href="{{ path('app_product_create') }}" class="btn btn-primary my-5">Crear nuevo producto</a>
+</div>
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for product in products %}
+
+    <tr>
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.getCategoryId().name}}</td>
+      <td>{{product.stock}}</td>
+      <td>
+        <a class="btn btn-primary" title="Editar" href="{{ path('app_product_edit', {'id': product.id}) }}"><i class="fa-solid fa-pen text-light"></i></a>
+        <a class="btn btn-danger" title="Borrar" href="{{ path('app_product_delete', {'id': product.id}) }}"><i class="fa-solid fa-trash-can text-light"></i></a>
+      </td>
+    </tr>
+
+{% endfor %}
+      </tbody>
+</table>
+
+
+{% endblock %}

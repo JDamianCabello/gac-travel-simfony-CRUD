@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+        <div class="row">
+            <h3 class="mt-5 mb-5 offset-md-3">Registro de usuarios</h3>
+            <div class="col-md-6 offset-md-3">
+                {{ form_start(registrationForm) }}
+                    <div class="form-group">
+                        {{ form_label(registrationForm.username,'Nombre de usuario') }}
+                        {{ form_widget(registrationForm.username,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(registrationForm.plainPassword,'Contraseña') }}
+                        {{ form_widget(registrationForm.plainPassword,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Registrarse</button>
+                    </div>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+{% endblock %}

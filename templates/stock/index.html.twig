@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StockController!{% endblock %}
+
+{% block body %}
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID Log</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for log in logs %}
+
+    <tr>
+      <td>{{log.id}}</td>
+      <td>{{log.getCreatedAt().format('d/m/Y H:i:s')}}</td>
+      <td>{{log.getUserId().username}}</td>
+      <td>{{log.getProductId().name}}</td>
+      <td>{{log.stock}}</td>
+    </tr>
+
+{% endfor %}
+      </tbody>
+</table>
+{% endblock %}

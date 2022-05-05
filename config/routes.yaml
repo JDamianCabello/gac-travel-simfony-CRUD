@@ -1,3 +1,75 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+app_category:
+    path: /category
+    controller: App\Controller\CategoryController::index
+
+app_category_new:
+    path: /category/new
+    controller: App\Controller\CategoryController::create
+
+app_category_edit:
+    path: /category/edit/{id}
+    controller: App\Controller\CategoryController::update
+
+app_category_delete:
+    path: /category/delete/{id}
+    controller: App\Controller\CategoryController::delete
+
+app_dashboard:
+    path: /dashboard
+    controller: App\Controller\DashboardController::index
+
+app_home_page:
+    path: /
+    controller: App\Controller\DashboardController::index
+
+app_user:
+    path: /user
+    controller: App\Controller\UserController::index
+
+app_user_new:
+    path: /user/new
+    controller: App\Controller\UserController::create
+
+app_user_delete:
+    path: /user/delete/{id}
+    controller: App\Controller\UserController::delete
+
+app_user_edit:
+    path: /user/edit/{id}
+    controller: App\Controller\UserController::update
+
+app_product:
+    path: /product
+    controller: App\Controller\ProductController::index
+
+app_product_delete:
+    path: /product/delete/{id}
+    controller: App\Controller\ProductController::delete
+
+app_product_create:
+    path: /product/new/
+    controller: App\Controller\ProductController::create
+
+app_product_edit:
+    path: /product/edit/{id}
+    controller: App\Controller\ProductController::update
+
+app_log:
+    path: /logs
+    controller: App\Controller\StockController::index

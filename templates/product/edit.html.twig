@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificar Usuario{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <h3 class="mt-5 mb-5 offset-md-3">Modificar usuario</h3>
+        <div class="col-md-6 offset-md-3">
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.name,'Nombre de producto:') }}
+                    {{ form_widget(form.name,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.stock,'Stock:') }}
+                    {{ form_widget(form.stock,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.category_id,'Categoría:') }}
+                    {{ form_widget(form.category_id,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info mt-2 text-white">Crear producto</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

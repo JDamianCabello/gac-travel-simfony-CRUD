@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificar Usuario{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <h3 class="mt-5 mb-5 offset-md-3">Modificar usuario</h3>
+        <div class="col-md-6 offset-md-3">
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.username,'Nombre de usuario:') }}
+                    {{ form_widget(form.username,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.plainPassword,'Contraseña:') }}
+                    {{ form_widget(form.plainPassword,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.active) }}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info mt-2 text-white">Actualizar usuario</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

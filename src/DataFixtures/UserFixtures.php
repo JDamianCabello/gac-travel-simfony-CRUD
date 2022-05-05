@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
         $adminUser->setUsername($adminUsername);
         $adminUser->setActive(true);
         $adminUser->setCreatedAt($date);
-        $adminUser->setRoles(['admin']);
+        $adminUser->setRoles(['ROLE_USER']);
 
         $factory = new PasswordHasherFactory([
             'common' => ['algorithm' => 'auto'],

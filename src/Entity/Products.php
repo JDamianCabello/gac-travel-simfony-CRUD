@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,12 +25,6 @@ class Products
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category_id;
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
@@ -37,6 +33,23 @@ class Products
      * @ORM\Column(type="integer")
      */
     private $stock;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $category_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StockHistory::class, mappedBy="product_id")
+     */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -87,6 +100,48 @@ class Products
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StockHistory[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(StockHistory $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setProductId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(StockHistory $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getProductId() === $this) {
+                $product->setProductId(null);
+            }
+        }
 
         return $this;
     }

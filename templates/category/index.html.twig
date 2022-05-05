@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de categorías{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('alert') %}
+    <div class="alert alert-primary mt-5">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger mt-5">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<div class="text-right w-100">
+  <a href="{{ path('app_category_new') }}" class="btn btn-primary my-5">Crear nueva categoría</a>
+</div>
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for category in categorys %}
+
+    <tr>
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td>
+        <a class="btn btn-primary" title="Editar" href="{{ path('app_category_edit', {'id': category.id}) }}"><i class="fa-solid fa-pen text-light"></i></a>
+        <a class="btn btn-danger" title="Borrar" href="{{ path('app_category_delete', {'id': category.id}) }}"><i class="fa-solid fa-trash-can text-light"></i></a>
+      </td>
+    </tr>
+
+{% endfor %}
+      </tbody>
+</table>
+
+
+{% endblock %}
